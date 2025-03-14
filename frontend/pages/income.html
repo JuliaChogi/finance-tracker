@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Доходы</title>
+    <link rel="stylesheet" href="../libs/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/adaptive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<section class="income">
+    <div class="main-container">
+        <h1 class="main-title">
+            Доходы
+        </h1>
+
+        <div class="cards-wrapper">
+            <div class="category-card card">
+                <div class="card-title title-small">Депозиты</div>
+                <div class="card-buttons">
+                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
+                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
+                </div>
+            </div>
+
+            <div class="category-card card">
+                <div class="card-title title-small">Зарплата</div>
+                <div class="card-buttons">
+                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
+                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
+                </div>
+            </div>
+
+            <div class="category-card card">
+                <div class="card-title title-small">Сбережения</div>
+                <div class="card-buttons">
+                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
+                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
+                </div>
+            </div>
+
+            <div class="category-card card">
+                <div class="card-title title-small">Инвестиции</div>
+                <div class="card-buttons">
+                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
+                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
+                </div>
+            </div>
+
+            <div class="card-create card">
+                <img src="/frontend/assets/icons/plus.png" alt="Добавить">
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="overlay" id="overlay">
+    <div class="popup">
+        <p class="popup-text">
+            Вы действительно хотите удалить категорию? Связанные доходы будут удалены навсегда.
+        </p>
+        <div class="popup-actions">
+            <button class="btn btn-success btn-sm">Да, удалить</button>
+            <button class="btn btn-danger btn-sm">Не удалять</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
