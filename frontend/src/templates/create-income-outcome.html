@@ -1,0 +1,41 @@
+
+<section class="create-income-outcome">
+    <div class="main-container">
+        <h1 class="main-title">
+            Создание дохода/расхода
+        </h1>
+
+        <form class="income-outcome-form">
+            <div class="form-group">
+                <select id="type" name="type">
+                    <option value="" disabled selected>Тип</option>
+                    <option value="income">Доход</option>
+                    <option value="expense">Расход</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Категория</option>
+                    <!-- Категории будут подгружаться динамически в зависимости от выбора типа -->
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" id="amount" name="amount" required placeholder="Сумма"/>
+            </div>
+
+            <div class="form-group">
+                <input type="date" id="date" name="date" required placeholder="Дата"/>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="comment" name="comment" placeholder="Комментарий">
+
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-success btn-sm">Создать</button>
+                <button class="btn btn-danger btn-sm">Отмена</button>
+            </div>
+        </form>
+    </div>
+</section>

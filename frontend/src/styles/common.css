@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Roboto', sans-serif;
+    src: url("/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Roboto-Medium', sans-serif;
+    src: url("/fonts/Roboto-Medium.ttf");
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+    margin-top: 100px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.main-title {
+    font-family: 'Roboto-Medium', sans-serif;
+    font-size: 40px;
+    line-height: 47px;
+    color: #052C65;
+}
+
+.title-small {
+    font-family: 'Roboto-Medium', sans-serif;
+    font-size: 28px;
+    line-height: 33px;
+    color: #290661;
+}
+
+.big-logo {
+    margin-bottom: 60px;
+}
+
+.form-check {
+    display: flex;
+}
+
+#incomeChart, #expensesChart {
+    max-width: 437px;
+}
+
+.form-check-label {
+    font-size: 12px;
+    line-height: 23px;
+    color: #000000;
+    margin-left: 11px;
+}
+
+.form-check-input[type=checkbox] {
+    background: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 2px;
+    height: 13px;
+    width: 13px;
+}
+
+
+.main-button {
+    width: 100px;
+}
+
+.main-dates {
+    display: flex;
+    width: 180px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-dates span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #6C757D;
+}
+
+.action-link {
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ced4da;
+    border-radius: 12px;
+    padding: 20px;
+    width: 352px;
+    box-sizing: border-box;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    max-width: 530px;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.popup-text {
+    font-family: 'Roboto-Medium', sans-serif;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #290661;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.input-wrapper {
+    margin-top: 40px;
+}
+
+.input-common {
+    width: 397px;
+    padding: 7px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.input-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+input::placeholder {
+    font-size: 15px;
+    line-height: 24px;
+    color: #6C757D;
+}
+
+.transaction-actions {
+    margin: 40px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+
+
+.transaction-table {
+    margin-top: 40px;
+    text-align: center;
+}
+
+table.table-hover thead th {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 1.3px;
+    color: #052C65;
+}
+
+td.transaction-type.income {
+    color: #198754;
+}
+
+td.transaction-type.outcome {
+    color: #DC3545;
+}
+
+a.transaction-edit, a.transaction-delete {
+    text-decoration: none;
+}
+
+.transaction-table-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.income-outcome-form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 397px;
+}
+
+.form-group select, .form-group input {
+    width: 100%;
+    height: 38px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #6C757D;
+    padding: 7px 16px;
+    border-radius: 5px;
+    border: 1px solid #CED4DA;
+}
+
+.form-group select:active,
+.form-group select:hover,
+.form-group input:active,
+.form-group input:hover {
+    border: 1px solid #6C757D;
+}
+
+.form-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 12px;
+}
+
