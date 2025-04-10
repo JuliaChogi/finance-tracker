@@ -5,6 +5,7 @@ import {IncomeExpensesTable} from "./components/IncomeExpensesTable";
 import {Expenses} from "./components/Expenses";
 import {Income} from "./components/Income";
 import {IncomeOutcomeForm} from "./components/IncomeOutcomeForm";
+import {Layout} from "./components/layout";
 
 export class Router {
     constructor() {
@@ -130,8 +131,35 @@ export class Router {
     }
 
     initEvents() {
+        //Двойной вызов, как исправить?
         window.addEventListener('DOMContentLoaded', this.activateRoute.bind(this));
         window.addEventListener('popstate', this.activateRoute.bind(this));
+        document.addEventListener('click', this.clickHandler.bind(this));
+    }
+
+    async clickHandler(e) {
+        let element = null;
+        if (e.target.nodeName === 'A') {
+            element = e.target;
+        } else if (e.target.parentNode.nodeName === 'A') {
+            element = e.target.parentNode;
+        }
+
+        if (element) {
+            e.preventDefault();
+
+            const url = element.href.replace(window.location.origin, '');
+            if (!url || url === '/#' || url.startsWith('javascript:void(0)')) {
+                return
+            }
+            await this.openNewRoute(url);
+        }
+    }
+
+    async openNewRoute(url) {
+        const currentRoute = window.location.pathname;
+        history.pushState({}, '', url);
+        await this.activateRoute(null, currentRoute);
     }
 
     loadGlobalStyles() {
@@ -159,6 +187,7 @@ export class Router {
     }
 
     async activateRoute() {
+        console.log('Activate Route') //ДВОЙНОЙ ВЫЗОВ Т_Т
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
@@ -170,13 +199,10 @@ export class Router {
             if (newRoute.template) {
                 if (newRoute.useLayout) {
                     this.loadLayoutStyles();
-                    const layoutHTML = await fetch('/templates/layout.html').then(response => response.text());
-                    this.contentPageElement.innerHTML = layoutHTML;
-
+                    this.contentPageElement.innerHTML = await fetch('/templates/layout.html').then(response => response.text());
                     const section = this.contentPageElement.querySelector('section');
                     if (section) {
-                        const pageHTML = await fetch(newRoute.template).then(response => response.text());
-                        section.innerHTML = pageHTML;
+                        section.innerHTML = await fetch(newRoute.template).then(response => response.text());
                     } else {
                         console.error('Layout does not contain a <section> element to insert content.');
                     }
@@ -207,7 +233,6 @@ export class Router {
     }
 
     async loadLayoutScript() {
-        const { Layout } = await import('./components/layout.js');
         new Layout();
     }
 }

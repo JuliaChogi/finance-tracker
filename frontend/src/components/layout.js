@@ -1,6 +1,5 @@
 import {BalanceService} from "../services/BalanceService";
 import {Auth} from "../services/Auth";
-import config from "../config/config";
 
 export class Layout {
     constructor() {
@@ -9,7 +8,7 @@ export class Layout {
         this.navItems = document.querySelectorAll('.layout-nav-item');
 
         this.addEventListeners();
-        this.handleResize(); // Чтобы при первой загрузке всё работало корректно
+        this.handleResize();
         this.setNavItemListeners();
         this.displayBalance();
         this.showProfileName();
@@ -50,54 +49,17 @@ export class Layout {
 
     async displayBalance() {
         try {
-            const balance = await this.getBalance(); // Получаем баланс
-            const balanceElement = document.getElementById('balance'); // Находим элемент для отображения
+            const balance = await BalanceService.fetchBalance();
+            const balanceElement = document.getElementById('balance');
 
             if (balance !== null && balanceElement) {
-                balanceElement.innerText = `${balance}$`; // Обновляем текст с балансом
+                balanceElement.innerText = `${balance}$`;
             } else {
                 console.error('Не удалось получить баланс');
             }
         } catch (error) {
             console.error('Ошибка при получении баланса:', error);
         }
-    }
-
-    // Новый метод для получения баланса, как в примере
-    async getBalance() {
-        const accessToken = localStorage.getItem(Auth.accessTokenKey); // Получаем токен
-
-        if (accessToken) {
-            let response = await fetch(config.host + '/balance', {
-                method: 'GET',
-                headers: {
-                    'x-auth-token': accessToken, // Отправляем токен в заголовке
-                },
-            });
-
-            if (response.status === 401) { // Если токен истек
-                // Ждем, пока токены обновятся
-                const isUpdated = await Auth.processUnauthorizedResponse();
-                if (isUpdated) {
-                    // После обновления токенов повторяем запрос с новым accessToken
-                    const newAccessToken = localStorage.getItem(Auth.accessTokenKey);
-                    response = await fetch(config.host + '/balance', {
-                        method: 'GET',
-                        headers: {
-                            'x-auth-token': newAccessToken, // Используем новый токен
-                        },
-                    });
-                }
-            }
-
-            if (response && response.status === 200) {
-                const result = await response.json();
-                if (result && !result.error) {
-                    return result.balance; // Возвращаем баланс из ответа
-                }
-            }
-        }
-        return null; // Если токен не найден или запрос неудачен, возвращаем null
     }
 
     showProfileName() {
@@ -115,46 +77,4 @@ export class Layout {
     }
 }
 
-
-//     async displayBalance() {
-//         try {
-//             const balance = await this.getBalance(); // Получаем баланс
-//             const balanceElement = document.getElementById('balance'); // Находим элемент для отображения
-//
-//             if (balance !== null && balanceElement) {
-//                 balanceElement.innerText = `${balance}$`; // Обновляем текст с балансом
-//             } else {
-//                 console.error('Не удалось получить баланс');
-//             }
-//         } catch (error) {
-//             console.error('Ошибка при получении баланса:', error);
-//         }
-//     }
-//
-//     // Новый метод для получения баланса, как в примере
-//     async getBalance() {
-//         const accessToken = localStorage.getItem(Auth.accessTokenKey); // Получаем токен
-//
-//         if (accessToken) {
-//             const response = await fetch(config.host + '/balance', {
-//                 method: 'GET',
-//                 headers: {
-//                     'x-auth-token': accessToken, // Отправляем токен в заголовке
-//                 },
-//             });
-//
-//
-//
-//             if (response && response.status === 200) {
-//                 const result = await response.json();
-//                 if (result && !result.error) {
-//                     return result.balance; // Возвращаем баланс из ответа
-//                 }
-//             }
-//         }
-//         return null; // Если токен не найден или запрос неудачен, возвращаем null
-//     }
-// }
-
-
-new Layout();
+// new Layout();
