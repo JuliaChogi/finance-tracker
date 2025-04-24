@@ -58,7 +58,6 @@ export class Auth {
         }
     }
 
-
     static setTokens(accessToken, refreshToken) {
         localStorage.setItem(this.accessTokenKey, accessToken);
         localStorage.setItem(this.refreshTokenKey, refreshToken);
@@ -75,6 +74,7 @@ export class Auth {
         }
         return null;
     }
+
     static removeUserInfo() {
         localStorage.removeItem(this.userInfoKey);
     }
@@ -82,10 +82,12 @@ export class Auth {
     static setUserEmail(email) {
         localStorage.setItem(this.userEmailKey, email);
     }
+
     static getUserEmail() {
         const email = localStorage.getItem(this.userEmailKey);
         return email ? email : null;
     }
+
     static removeUserEmail() {
         localStorage.removeItem(this.userEmailKey);
     }
@@ -95,5 +97,4 @@ export class Auth {
         localStorage.removeItem(this.accessTokenKey);
         localStorage.removeItem(this.refreshTokenKey);
     }
-
 }

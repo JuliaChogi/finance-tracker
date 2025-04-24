@@ -6,6 +6,8 @@ import {Expenses} from "./components/Expenses";
 import {Income} from "./components/Income";
 import {IncomeOutcomeForm} from "./components/IncomeOutcomeForm";
 import {Layout} from "./components/layout";
+import {DateFilter} from "./services/DateFilter";
+
 
 export class Router {
     constructor() {
@@ -23,6 +25,8 @@ export class Router {
                 useLayout: true,
                 load: () => {
                     new Dashboard();
+                    new DateFilter();
+
                 }
             },
             {
@@ -47,12 +51,12 @@ export class Router {
                 }
             },
             {
-                route: '/create-expenses',
+                route: '/create-expense',
                 title: 'Создать категорию расходов',
-                template: '/templates/create-expenses.html',
+                template: '/templates/create-expense.html',
                 useLayout: true,
                 load: () => {
-                    new CategoryForm('create', 'expenses')
+                    new CategoryForm('create', 'expense')
                 }
             },
             {
@@ -65,12 +69,12 @@ export class Router {
                 }
             },
             {
-                route: '/edit-expenses',
+                route: '/edit-expense',
                 title: 'Редактировать категорию расходов',
-                template: '/templates/edit-expenses.html',
+                template: '/templates/edit-expense.html',
                 useLayout: true,
                 load: () => {
-                    new CategoryForm('edit', 'expenses')
+                    new CategoryForm('edit', 'expense')
                 }
             },
             {
@@ -85,19 +89,21 @@ export class Router {
             {
                 route: '/create-income-outcome',
                 title: 'Создать доход/расход',
-                template: '/templates/create-income-outcome.html',
+                template: '/templates/income-outcome-form.html',
                 useLayout: true,
                 load: () => {
-                    new IncomeOutcomeForm('create');
+                    const urlParams = new URLSearchParams(location.search);
+                    const type = urlParams.get('type');
+                    new IncomeOutcomeForm(type).init();
                 }
             },
             {
                 route: '/edit-income-outcome',
                 title: 'Редактировать доход/расход',
-                template: '/templates/edit-income-outcome.html',
+                template: '/templates/income-outcome-form.html',
                 useLayout: true,
                 load: () => {
-                    new IncomeOutcomeForm('edit');
+                    new IncomeOutcomeForm().init();
                 }
             },
             {
@@ -125,15 +131,19 @@ export class Router {
                 useLayout: true,
                 load: () => {
                     new IncomeExpensesTable();
+                    new DateFilter();
                 }
             }
         ];
     }
 
     initEvents() {
-        //Двойной вызов, как исправить?
-        window.addEventListener('DOMContentLoaded', this.activateRoute.bind(this));
-        window.addEventListener('popstate', this.activateRoute.bind(this));
+        window.addEventListener('DOMContentLoaded', () => {
+            this.activateRoute.bind(this);
+        });
+        window.addEventListener('popstate', () => {
+            this.activateRoute.bind(this);
+        });
         document.addEventListener('click', this.clickHandler.bind(this));
     }
 
@@ -176,18 +186,14 @@ export class Router {
             head.appendChild(tag);
         };
 
-        // Подключаем Bootstrap
         addResource('link', '/libs/bootstrap/bootstrap.css');
         addResource('script', '/libs/bootstrap/bootstrap.bundle.js');
 
-        // Подключаем общие стили
         addResource('link', '/styles/common.css');
         addResource('link', '/styles/adaptive.css');
-
     }
 
     async activateRoute() {
-        console.log('Activate Route') //ДВОЙНОЙ ВЫЗОВ Т_Т
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
@@ -212,13 +218,11 @@ export class Router {
                 }
             }
 
-            if (newRoute.load && typeof newRoute.load === 'function') {
-                newRoute.load();
-
-            }
-        } else {
-            console.log('No route found');
-            window.location = '/404';
+            requestAnimationFrame(() => {
+                if (typeof newRoute.load === 'function') {
+                    newRoute.load();
+                }
+            })
         }
     }
 

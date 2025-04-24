@@ -6,7 +6,6 @@ export class BalanceService {
         try {
             const response = await CustomHttp.request(config.host + '/balance', 'GET');
             if (response && response.balance !== undefined) {
-                console.log(response);
                 return response.balance;
             } else {
                 console.error('Ошибка получения баланса');

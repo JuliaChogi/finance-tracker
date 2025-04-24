@@ -5,15 +5,21 @@
         </h1>
 
         <div class="main-actions d-flex flex-wrap gap-2 mb-5">
-            <button class="main-button btn btn-outline-secondary btn-sm active" role="button" aria-pressed="true">
+            <button class="main-button btn btn-outline-secondary btn-sm" data-range="today">
                 Сегодня
             </button>
-            <button class="main-button btn btn-outline-secondary btn-sm">Неделя</button>
-            <button class="main-button btn btn-outline-secondary btn-sm">Месяц</button>
-            <button class="main-button btn btn-outline-secondary btn-sm">Год</button>
-            <button class="main-button btn btn-outline-secondary btn-sm">Все</button>
-            <button class="main-button btn btn-outline-secondary btn-sm">Интервал</button>
-            <span class="main-dates">с <span>Дата</span> по <span>Дата</span></span>
+            <button class="main-button btn btn-outline-secondary btn-sm" data-range="week">Неделя</button>
+            <button class="main-button btn btn-outline-secondary btn-sm" data-range="month">Месяц</button>
+            <button class="main-button btn btn-outline-secondary btn-sm" data-range="year">Год</button>
+            <button class="main-button btn btn-outline-secondary btn-sm" data-range="all">Все</button>
+            <button class="main-button btn btn-outline-secondary btn-sm" data-range="custom">Интервал
+            </button>
+            <div class="main-dates align-items-center gap-1" id="interval-inputs">
+                с
+                <input type="date" class="form-control form-control-sm" id="date-from" placeholder="Дата">
+                по
+                <input type="date" class="form-control form-control-sm" id="date-to" placeholder="Дата"></div>
+
         </div>
 
         <div class="main-diagrams-wrapper row">

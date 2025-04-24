@@ -5,41 +5,41 @@
         </h1>
 
         <div class="cards-wrapper">
-            <div class="category-card card">
-                <div class="card-title title-small">Депозиты</div>
-                <div class="card-buttons">
-                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
-                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
-                </div>
-            </div>
+<!--            <div class="category-card card">-->
+<!--                <div class="card-title title-small">Депозиты</div>-->
+<!--                <div class="card-buttons">-->
+<!--                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>-->
+<!--                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="category-card card">
-                <div class="card-title title-small">Зарплата</div>
-                <div class="card-buttons">
-                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
-                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
-                </div>
-            </div>
+<!--            <div class="category-card card">-->
+<!--                <div class="card-title title-small">Зарплата</div>-->
+<!--                <div class="card-buttons">-->
+<!--                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>-->
+<!--                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="category-card card">
-                <div class="card-title title-small">Сбережения</div>
-                <div class="card-buttons">
-                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
-                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
-                </div>
-            </div>
+<!--            <div class="category-card card">-->
+<!--                <div class="card-title title-small">Сбережения</div>-->
+<!--                <div class="card-buttons">-->
+<!--                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>-->
+<!--                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="category-card card">
-                <div class="card-title title-small">Инвестиции</div>
-                <div class="card-buttons">
-                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>
-                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>
-                </div>
-            </div>
+<!--            <div class="category-card card">-->
+<!--                <div class="card-title title-small">Инвестиции</div>-->
+<!--                <div class="card-buttons">-->
+<!--                    <div class="card-button-blue btn btn-primary btn-sm">Редактировать</div>-->
+<!--                    <div class="card-button-red btn btn-danger btn-sm">Удалить</div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="card-create card">
-                <img src="/icons/plus.png" alt="Добавить">
-            </div>
+<!--            <div class="card-create card">-->
+<!--                <img src="/icons/plus.png" alt="Добавить">-->
+<!--            </div>-->
 
         </div>
     </div>
@@ -47,11 +47,11 @@
 <div class="overlay" id="overlay">
     <div class="popup">
         <p class="popup-text">
-            Вы действительно хотите удалить категорию? Связанные доходы будут удалены навсегда.
+            Вы действительно хотите удалить категорию "<span id="popupCategoryName"></span>"? Связанные доходы будут удалены навсегда.
         </p>
         <div class="popup-actions">
-            <button class="btn btn-success btn-sm">Да, удалить</button>
-            <button class="btn btn-danger btn-sm">Не удалять</button>
+            <button class="btn btn-success btn-sm" id="approvePopupButton">Да, удалить</button>
+            <button class="btn btn-danger btn-sm" id="cancelPopupButton">Не удалять</button>
         </div>
     </div>
 </div>

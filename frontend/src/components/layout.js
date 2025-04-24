@@ -70,11 +70,11 @@ export class Layout {
 
     logoutProfile() {
         const logoutButton = document.getElementById('logout');
-        logoutButton.addEventListener("click", async  () => {
+        logoutButton.addEventListener("click", async  (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
             await Auth.logout();
             location.href = '/login';
         })
     }
 }
-
-// new Layout();
