@@ -48,7 +48,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'app.js',
     },
-    devtool: 'eval-source-map', // Добавляем source map для твоего кода
+    devtool: 'eval-source-map',
     devServer: {
         static: {
             directory: path.join(__dirname, 'public'),
@@ -58,7 +58,7 @@ module.exports = {
         historyApiFallback: true,
     },
     optimization: {
-        minimize: false, // Отключаем минимизацию (если нужно для упрощения отладки)
+        minimize: false,
     },
     plugins: [
         new HtmlWebpackPlugin({

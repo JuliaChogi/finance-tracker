@@ -33,9 +33,7 @@
             </li>
 
             <li class="layout-nav-item">
-
                 <a href="/income-expense-table" class="nav-link">
-
                     <svg class="mr-2" width="16" height="16" viewBox="0 0 16 16" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -48,7 +46,6 @@
                         <path d="M9.9983 5.08325C9.99943 5.05564 10 5.02789 10 5C10 3.89543 9.10457 3 8 3C6.89543 3 6 3.89543 6 5C6 5.6845 6.34387 6.28869 6.86829 6.64924C7.71486 5.84504 8.79591 5.28533 9.9983 5.08325Z"
                         />
                     </svg>
-
                     <p class="nav-link-info">Доходы & расходы</p>
                 </a>
             </li>
@@ -72,16 +69,18 @@
 
         <hr>
 
-        <div class="layout-profile-toggle dropdown d-flex align-items-center  mb-4 ">
-            <a href="#" class="layout-nav-toggle d-flex align-items-center " data-bs-toggle="dropdown"
-               aria-expanded="false">
-                <div class="layout-profile-wrap">
+        <div class="layout-profile-toggle dropdown d-flex align-items-center mb-4">
+            <button type="button" class="layout-nav-toggle d-flex align-items-center border-0 bg-transparent p-0"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <span class="layout-profile-wrap">
                     <img src="/icons/person.png" alt="Person"
-                         class="layout-profile-icon"></div>
-                <p class="nav-link" id="profileName">Пользователь</p>
-            </a>
+                         class="layout-profile-icon"></span>
+                <span class="nav-link" id="profileName">Пользователь</span>
+            </button>
             <ul class="dropdown-menu">
-                <li><a class="layout-nav-item dropdown-item nav-link" href="javascript:void(0);" id="logout">Выход</a></li>
+                <li><a class="layout-nav-item dropdown-item nav-link" href="javascript:void(0);" id="logout">Выход</a>
+                </li>
             </ul>
         </div>
     </div>
